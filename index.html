@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Espectrograma</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="main-controls">
+<br>
+            <label id="visual">VISUAL</label>
+            <br>
+            <select id="scale" onchange="YAxisMarks()">
+                <option value="Linear">Escala: Linear</option>
+   
+                <option value="Mel" selected>Escala: Mel</option>
+            </select>
+            <select id="f_min">
+                
+                <option value="10">Frequência Mínima: 10 Hz</option>
+                <option value="20">Frequência Mínima: 20 Hz</option>
+                <option value="30">Frequência Mínima: 30 Hz</option>
+                <option value="40">Frequência Mínima: 40 Hz</option>
+                <option value="50" selected>Frequência Mínima: 50 Hz</option>
+                <option value="80">Frequência Mínima: 80 Hz</option>
+                <option value="100">Frequência Mínima: 100 Hz</option>
+            </select>
+            <select id="f_max">
+                <option value="1000">Frequência Máxima: 1 KHz</option>
+                <option value="2000">Frequência Máxima: 2 KHz</option>
+                <option value="3000">Frequência Máxima: 3 KHz</option>
+                <option value="4000">Frequência Máxima: 4 KHz</option>
+                <option value="5000">Frequência Máxima: 5 KHz</option>
+                <option value="10000"selected>Frequência Máxima: 10 KHz</option>
+                <option value="15000">Frequência Máxima: 15 KHz</option>
+                <option value="20000">Frequência Máxima: 20 KHz</option>
+            </select>
+            <br>
+            <br> 
+            <select id="speed" onchange="PlotSpectro1()">
+                <option value="1">Speed: 1</option>
+                <option value="2" >Velocidade: 2</option>
+                <option value="3">Velocidade: 3</option>
+                <option value="4" selected>Velocidade: 4</option>
+                <option value="5">Velocidade: 5</option>
+            </select>
+            <select id="colormap" onchange="plot_colormap()">
+                <option value="jet">Cor do Mapa: Frio</option>
+                <option value="hot" selected>Cor do Mapa: Quente</option>
+                <option value="Greens" >Cor do Mapa: Branco/Verde</option>
+                <option value="summer" >Cor do Mapa: Verde</option>
+                <option value="viridis">Cor do Mapa: Roxo</option>
+                <option value="turbo">Cor do Mapa: Azul-grená</option>
+                <option value="Blues">Cor do Mapa: Branco/Azul</option>
+
+                <option value="terrain">Cor do Mapap: Azul/Marrom</option>
+                <option value="winter">Cor do Mapa: Azul/Verde</option>
+                <option value="binary">Cor do Mapa: Branco/Preto</option>
+                <option value="RdPu">Cor do Mapa: Branco/Roxo/Rosa</option>
+                <option value="gist_gray" >Cor do Mapa: Preto/Cinza</option>
+
+            </select>
+
+            <label>SENSIBILIDADE </label><input id="sensibility" type="range" value="60" min="10" max="100" oninput="this.nextElementSibling.value = this.value">
+            <output id="output_sensibility"> 60 </output> dB
+            <label>ANDANDO</label><input type="checkbox" id="scrolling" checked> <label>PARADO </label>
+            <input type="checkbox" id="stop">
+            <br>
+            <br>
+            <label>PARÂMETROS</label>
+            <br>
+            <br>
+            <select id="sizeFFT" onchange="callback(stream)">
+                <option value="2048">Tamanho do Buffer: 2048</option>
+                <option value="4096" >Tamanho do Buffer: 4096</option>
+                <option value="8192"selected >Tamanho do Buffer: 8192</option>
+                
+            </select>
+            <select id="window">
+                <option value="None">Janela: Nenhuma</option>
+                <option value="Cosine">Janela: Cosine</option>
+                <option value="Hanning">Janela: Hanning</option>
+                <option value="BH7" selected>Window: Blackman Harris 7</option>
+            </select>
+            <select id="FFT" onchange="SetDefaultWindow()">
+                <option value="myFFT" selected>FFT Function: Custom FFT</option>
+                <option value="WebAudio">FFT Function: Web Audio</option>
+            </select>
+
+            <br>
+            
+
+        </div>
+        <br>
+        <div id="block_container">
+            <canvas class="canvas" style="border:3px solid;"></canvas>
+        </div>
+    </div>
+    <script src="./js-colormaps.js"></script>
+    <script src="./spectrogram.js"></script>
+<br>
+<br>
+<h3>Este espectrograma foi programado por Luigi de Azevedo Lopes, Marcelo Correa Padilha, João Pedro Machado e Leonardo Erig Daitx</h3>
+
+
+</body>
+
+</html>
