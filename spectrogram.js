@@ -1,4 +1,4 @@
-// set up basic variables for app
+//configurar variáveis ​​básicas para app
 var message = "  ";
 var message1 = "  ";
 var message2 = "  ";
