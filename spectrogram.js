@@ -24,17 +24,18 @@ var stop_sound = 0;
 var max_intensity;
 var sensibility;
 var sensibility_temp;
-// disable stop button while not recording
+// desative o botão de parada enquanto não estiver gravando
 
 
-// visualiser setup - create web audio api context and canvas
+//configuração do visualizador - crie o contexto e a tela da API de áudio da web
+
 
 let audioCtx;
 
 const canvasCtx = canvas.getContext("2d");
 //var my_x;
 
-//main block for doing the audio recording
+//bloco principal para fazer a gravação de áudio
 
 if (navigator.mediaDevices.getUserMedia) {
     console.log('getUserMedia supported.');
@@ -452,7 +453,7 @@ function PlotFFT() {
 
     }
     canvasCtx.stroke();
-    //Draw vertical line
+    //Desenhar linha vertical
     if (max_intensity > sensibility) {
         sensibility_temp = max_intensity;
         ColormapMarks();
@@ -670,21 +671,7 @@ function YaxisMarks() {
 window.onresize = function(event) {
         //applyOrientation();
     }
-    /*
-                function applyOrientation() {
-                    if (window.innerHeight > window.innerWidth) {
-                        alert("You are now in portrait");
-                        canvas.width = window.innerWidth;
-                        canvas.height = (window.innerHeight);
-                        YaxisMarks();
-                    } else {
-                        alert("You are now in landscape");
-                        canvas.width = window.innerWidth;
-                        canvas.height = (window.innerHeight);
-                        YaxisMarks();
-                    }
-                }
-    */
+
 function DisplayMultiLineAlert() {
     var newLine = "\r\n"
     message = message0
